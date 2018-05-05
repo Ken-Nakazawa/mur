@@ -1,9 +1,9 @@
-<% if @tweets.present? %>
-  <h2>検索結果</h2>
+<% if @tweets1.present? %>
+  <h2>トレンド</h2>
   <ul>
-    <% @tweets.each_with_index do |tweet, i| %>
+    <% @tweets1.each_with_index do |tweet1, i| %>
     <div class="list">
-      <li> <%= tweet.contents %> </li>
+      <li> <%= tweet1.name %> </li>
     </div>
     <% end %>
   </ul>

@@ -7,6 +7,18 @@
 <% end %>
 
 
+<% if @tweets.present? %>
+  <h2>検索結果</h2>
+  <ul>
+    <% @tweets.each_with_index do |tweet, i| %>
+    <div class="list">
+      <li> <%= tweet.contents %> </li>
+    </div>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <table>
   <thead>
     <tr>
@@ -16,15 +28,15 @@
     </tr>
   </thead>
   <tbody>
-  <% if @items.present? %>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to item.name, "#{item.url}" %></td>
-        <td align="right"><%= number_with_delimiter(item.price) %>円</td>
-      
-      </tr>
-    <% end %>
-  <% end %>
-  </tbody>
+   <% if @items.present? %>
+     <% @items.each do |item| %>
+       <tr>
+         <td><%= link_to item.name, "#{item.url}" %></td>
+         <td align="right"><%= number_with_delimiter(item.price) %>円</td>
+         <td><%= image_tag item["smallImageUrls"][0] %></td>
+       </tr>
+     <% end %>
+   <% end %>
+   </tbody>
 </table>
 </html>

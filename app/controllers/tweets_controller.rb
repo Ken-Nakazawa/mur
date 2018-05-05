@@ -2,8 +2,8 @@ class TweetsController < ApplicationController
   def search
       client = Twitter::REST::Client.new do |config|
         # 事前準備で取得したキーのセット
-        config.consumer_key         = "9ANwqVTcD0vBHxhifWw3liUGB"
-        config.consumer_secret      = "pSfA7G3bAQlMBHoX0jZsY52KYaN095pajo33y50BhksMKwIjoJ"
+        config.consumer_key         = ""
+        config.consumer_secret      = ""
       end
 
       @tweets1 = client.trends(1118370)

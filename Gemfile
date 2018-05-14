@@ -45,6 +45,9 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'omniauth'
+  gem 'omniauth-twitter'
+  gem 'dotenv-rails' #環境変数を簡単に利用できるgem
 end
 
 group :development do

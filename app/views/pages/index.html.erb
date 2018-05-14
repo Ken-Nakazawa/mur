@@ -1,26 +1,70 @@
 <!DOCTYPE html>
-<%= form_tag :rakuten_search, method: :get do  %>
-  <%= label_tag :keyword, 'キーワード検索' %>
-  <%= text_field_tag 'keyword', params[:keyword] %>
-  <%= submit_tag "検索" %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>価格</th>
-      <th>画像</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% if @items.present? %>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= link_to item.name, "#{item.url}" %></td>
-        <td align="right"><%= number_with_delimiter(item.price) %>円</td>
-        <td><%= image_tag item["smallImageUrls"][0]["imageUrl"] %></td>
-      </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-</table>
+  <div id="container">
+    <div id="header">
+      A（ヘッダ）
+    </div>
+    <div id="wrapper">
+      <div id="boxA">
+        <%= form_tag :rakuten_search, method: :get do  %>
+          <%= label_tag :keyword, 'キーワード検索' %>
+          <%= text_field_tag 'keyword', params[:keyword] %>
+          <%= submit_tag "検索" %>
+        <% end %>
+
+        <% if @trends.present? %>
+          <h2>トレンド</h2>
+          <ul>
+            <% @trends.each_with_index do |trend, i| %>
+              <div class="list">
+                <li> <%= link_to trend.name %> </li>
+              </div>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+      <div id="boxB">
+        <% if @tweets.present? %>
+          <h2>検索結果</h2>
+          <ul>
+            <% @tweets.each_with_index do |tweet, i| %>
+              <div class="list">
+                <li>Tweet<%= i %>: <%= tweet.contents %> </li>
+              </div>
+            <% end %>
+          </ul>
+        <% else %>
+          <h2>検索結果がありません</h2>
+        <% end %>
+      </div>
+
+      <div id="boxC">
+        <% if @items.present? %>
+          <table>
+            <tbody>
+              <thead>
+                <tr>
+                <th>商品画像</th>
+                <th>商品名</th>
+                <th>価格</th>
+                </tr>
+              </thead>
+
+              <% @items.each do |item| %>
+                <tr>
+                  <td><%= image_tag item["smallImageUrls"][0] %></td>
+                  <td><%= link_to item.name, "#{item.url}" %></td>
+                  <td align="right"><%= number_with_delimiter(item.price) %>円</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h2>検索結果がありません</h2>
+        <% end %>
+      </div>
+    </div>
+    <div id="footer">
+    E（フッタ）
+    </div>
+  </div>

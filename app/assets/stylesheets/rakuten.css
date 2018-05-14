@@ -1,0 +1,45 @@
+body {
+ text-align:center;
+}
+
+#container {
+ width:100%;
+ margin-left:auto;
+ margin-right:auto;
+ text-align:left;
+ background-color: #c0c0c0
+}
+
+#header {
+ width:100%;
+ background-color: #ccffff
+}
+
+#wrapper {
+ width:100%;
+ float:left;
+}
+
+#boxA {
+ width:20%;
+ float:left;
+ background-color: #ffffdd
+}
+
+#boxB {
+ width:40%;
+ float:left;
+ background-color: #ffddff
+}
+
+#boxC {
+ width:40%;
+ float:left;
+ background-color: #99ff99
+}
+
+#footer {
+ width:100%;
+ clear:left;
+ background-color: #ccffff
+}

@@ -1,52 +1,61 @@
-<!DOCTYPE html>
-<html>
-<%= form_tag :rakuten_search, method: :get do  %>
-  <%= label_tag :keyword, 'キーワード検索' %>
-  <%= text_field_tag 'keyword', params[:keyword] %>
-  <%= submit_tag "検索" %>
-<% end %>
-
-<% if @tweets1.present? %>
-  <h2>トレンド</h2>
-  <ul>
-    <% @tweets1.each_with_index do |tweet1, i| %>
-    <div class="list">
-      <li> <%= tweet1.name %> </li>
+<div id="container">
+  <div id="header">
+    A（ヘッダ）
+  </div>
+  <div id="wrapper">
+    <div id="boxA">
+      <%= form_tag :rakuten_search, method: :get do  %>
+        <%= label_tag :keyword, 'キーワード検索' %>
+        <%= text_field_tag 'keyword', params[:keyword] %>
+        <%= submit_tag "検索" %>
+      <% end %>
+      <% if @trends.present? %>
+        <h2>トレンド</h2>
+        <ul>
+          <% @trends.each_with_index do |trend, i| %>
+            <div class="list">
+              <li> <%= link_to trend.name %> </li>
+            </div>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
-    <% end %>
-  </ul>
-<% end %>
-
-<% if @tweets.present? %>
-  <h2>検索結果</h2>
-  <ul>
-    <% @tweets.each_with_index do |tweet, i| %>
-    <div class="list">
-      <li> <%= tweet.contents %> </li>
+    <div id="boxB">
+      <% if @tweets.present? %>
+        <h2>検索結果</h2>
+        <ul>
+          <% @tweets.each_with_index do |tweet, i| %>
+            <div class="list">
+              <li>Tweet<%= i %>: <%= tweet.contents %> </li>
+            </div>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
-    <% end %>
-  </ul>
-<% end %>
-
-
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>価格</th>
-      <th>画像</th>
-    </tr>
-  </thead>
-  <tbody>
-   <% if @items.present? %>
-     <% @items.each do |item| %>
-       <tr>
-         <td><%= link_to item.name, "#{item.url}" %></td>
-         <td align="right"><%= number_with_delimiter(item.price) %>円</td>
-         <td><%= image_tag item["smallImageUrls"][0] %></td>
-       </tr>
-     <% end %>
-   <% end %>
-   </tbody>
-</table>
-</html>
+    <div id="boxC">
+      <% if @items.present? %>
+        <table>
+          <tbody>
+            <thead>
+              <tr>
+              <th>商品画像</th>
+              <th>商品名</th>
+              <th>価格</th>
+              </tr>
+            </thead>
+            <% @items.each do |item| %>
+              <tr>
+                <td><%= image_tag item["smallImageUrls"][0] %></td>
+                <td><%= link_to item.name, "#{item.url}" %></td>
+                <td align="right"><%= number_with_delimiter(item.price) %>円</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div id="footer">
+    E（フッタ）
+  </div>
+</div>

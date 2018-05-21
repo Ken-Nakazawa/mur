@@ -16,7 +16,7 @@
           <ul>
             <% @trends.each_with_index do |trend, i| %>
               <div class="list">
-                <li> <%= link_to trend.name %> </li>
+                <li> <%= link_to trend.name, rakuten_search_path(keyword: trend.name) %> </li>
               </div>
             <% end %>
           </ul>
@@ -25,7 +25,7 @@
 
       <div id="boxB">
         <% if @tweets.present? %>
-          <h2>検索結果</h2>
+          <b>検索結果</b>
           <ul>
             <% @tweets.each_with_index do |tweet, i| %>
               <div class="list">
@@ -53,8 +53,9 @@
               <% @items.each do |item| %>
                 <tr>
                   <td><%= image_tag item["smallImageUrls"][0] %></td>
-                  <td><%= link_to item.name, "#{item.url}" %></td>
+                  <td><%= link_to truncate(item.name, length: 50 ), "#{item.url}" %></td>
                   <td align="right"><%= number_with_delimiter(item.price) %>円</td>
+                  <td><%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %></td>
                 </tr>
               <% end %>
             </tbody>

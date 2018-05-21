@@ -43,3 +43,10 @@ body {
  clear:left;
  background-color: #ccffff
 }
+
+.topic-index-icon {
+  width: 22px;
+  height: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}

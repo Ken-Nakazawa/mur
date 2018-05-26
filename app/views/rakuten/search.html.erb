@@ -30,10 +30,13 @@
             </div>
           <% end %>
         </ul>
+      <% else %>
+        <h2>検索結果がありません</h2>
       <% end %>
     </div>
+
     <div id="boxC">
-      <% if @items.present? %>
+      <% if @items.first.present? %>
         <table>
           <tbody>
             <thead>
@@ -55,6 +58,8 @@
             <% end %>
           </tbody>
         </table>
+      <% else %>
+        <h2>検索結果がありません</h2>
       <% end %>
     </div>
   </div>

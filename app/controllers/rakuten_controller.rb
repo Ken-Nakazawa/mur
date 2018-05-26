@@ -1,6 +1,7 @@
 class RakutenController < ApplicationController
   def search
-    if params[:keyword]
+
+    if params[:keyword]  != ""
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
       end
 

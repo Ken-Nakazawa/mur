@@ -1,18 +1,25 @@
 <!DOCTYPE html>
   <div id="container">
-    <div id="header">
-      <%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %>
+    <div id="header" class="header_logo">
+      <ul>
+        <li id="logo">
+        <%= link_to root_path do %>
+        <%= image_tag 'icons/urge_logo.png', class: 'urge_logo' %></li>
+        <% end %>
+        <br>
+        <li align="center"><%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %></li>
+      </ul>
     </div>
     <div id="wrapper">
       <div id="boxA">
         <%= form_tag :rakuten_search, method: :get do  %>
-          <%= label_tag :keyword, 'キーワード検索' %>
+          <%= label_tag :keyword, '' %>
           <%= text_field_tag 'keyword', params[:keyword] %>
           <%= submit_tag "検索" %>
         <% end %>
 
         <% if @trends.present? %>
-          <h2>トレンド</h2>
+          <p id=texit_white></p>
           <ul>
             <% @trends.each_with_index do |trend, i| %>
               <div class="list">
@@ -43,9 +50,9 @@
           <table>
             <tbody>
               <thead>
-                <tr>
-                <th>商品画像</th>
-                <th>商品名</th>
+                <tr id=price>
+                <th><nobr>商品画像</nobr></th>
+                <th id=texit_white>商品名</th>
                 <th>価格</th>
                 </tr>
               </thead>
@@ -54,18 +61,18 @@
                 <tr>
                   <td><%= image_tag item["smallImageUrls"][0] %></td>
                   <td><%= link_to truncate(item.name, length: 50 ), "#{item.url}" %></td>
-                  <td align="right"><%= number_with_delimiter(item.price) %>円</td>
-                  <td><%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %></td>
+                  <td id=texit_white align="right"><%= number_with_delimiter(item.price) %>円</td>
+                  <td><%= image_tag 'icons/heart.png', class: 'topic-index-icon' %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
         <% else %>
-          <h2>検索結果がありません</h2>
+          <h2 id=texit_white>検索結果がありません</h2>
         <% end %>
       </div>
     </div>
     <div id="footer">
-    E（フッタ）
+      <p id=texit_white align="center">Copyright © 2018 Urge Inc. All rights reserved.</p>
     </div>
   </div>

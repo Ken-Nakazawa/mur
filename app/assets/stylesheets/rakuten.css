@@ -1,52 +1,95 @@
 body {
- text-align:center;
+  text-align:center;
 }
 
 #container {
- width:100%;
- margin-left:auto;
- margin-right:auto;
- text-align:left;
- background-color: #c0c0c0
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  background-color: #1b2233
 }
 
 #header {
- width:100%;
- background-color: #ccffff
+  width:100%;
+  background-color: #151721
+}
+
+#logo {
+  float: left;
 }
 
 #wrapper {
- width:100%;
- float:left;
+  width:100%;
+  float:left;
 }
 
 #boxA {
- width:20%;
- float:left;
- background-color: #ffffdd
+  width:20%;
+  float:left;
+  background-color: #151721
 }
 
 #boxB {
- width:40%;
- float:left;
- background-color: #ffddff
+  width:40%;
+  float:left;
+  background-color: #cccccc
 }
 
 #boxC {
- width:40%;
- float:left;
- background-color: #99ff99
+  width:40%;
+  float:left;
+  background-color: #1b2233
+}
+
+a {
+  color: #99ccff
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 5px;
+}
+
+ul {
+  list-style: none;
+}
+
+#texit_white {
+  color: #ffffff
+}
+
+.texit_white {
+  color: #ffffff
 }
 
 #footer {
- width:100%;
- clear:left;
- background-color: #ccffff
+  width:100%;
+  clear:left;
+  background-color: #1b2233
+}
+
+.urge_logo {
+  width: 70px;
+  height: 70px;
+  margin-left: 0px;
+  margin-right: px;
 }
 
 .topic-index-icon {
-  width: 22px;
-  height: 20px;
+  width: 20px;
+  height: 18px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.header_logo:after {
+  content: ".";
+  display: block;
+  visibility: hidden;
+  height: 0.1px;
+  font-size: 0.1em;
+  line-height: 0;
+  clear: both;
 }

@@ -12,7 +12,7 @@ class User < ApplicationRecord
      user.image_url = image_url
    end
   end
-  
-  has_many :topics
+
+  has_many :rakuten_id
   has_many :favorites
 end

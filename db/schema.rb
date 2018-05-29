@@ -13,8 +13,14 @@
 ActiveRecord::Schema.define(version: 20180526052049) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "uid"
     t.integer "topic_id"
+
+    t.integer "rakuten_id"
+    t.string "item_name"
+    t.string "item_url"
+    t.string "itemimage_url"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

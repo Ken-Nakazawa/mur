@@ -12,12 +12,13 @@ class PagesController < ApplicationController
       #puts t
     end
     @trends.each do |trend|
-      puts trend.name
+      t = trend.name
+      puts t.delete("#")
     end
 
     @tweets = []
-
     since_id = nil
+
     # 検索ワードが存在していたらツイートを取得
     if params[:keyword].present?
       # リツイートを除く、検索ワードにひっかかった最新30件のツイートを取得する

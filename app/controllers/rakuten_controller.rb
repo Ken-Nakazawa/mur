@@ -1,6 +1,7 @@
 class RakutenController < ApplicationController
   def search
-
+    pk = params[:keyword]
+    pk.delete!("#")
     if params[:keyword]  != ""
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
       end
@@ -23,6 +24,8 @@ class RakutenController < ApplicationController
           tweet = Tweet.new(tw.full_text)
           @tweets << tweet
         end
+
+
       end
         @trends = client.trends(1118370)
       respond_to do |format|

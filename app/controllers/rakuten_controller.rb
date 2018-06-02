@@ -23,6 +23,9 @@ class RakutenController < ApplicationController
         tweets.take(30).each do |tw|
           tweet = Tweet.new(tw.full_text)
           @tweets << tweet
+          tw.media.each do |t|
+          t.media_url
+          end
         end
 
 

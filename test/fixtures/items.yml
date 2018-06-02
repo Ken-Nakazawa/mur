@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rakutenitem_id: 1
+  item_name: MyString
+  item_url: MyString
+  itemimage_url: MyString
+
+two:
+  rakutenitem_id: 1
+  item_name: MyString
+  item_url: MyString
+  itemimage_url: MyString

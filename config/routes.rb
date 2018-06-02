@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback' => 'users#create'#このpathを通して認証が行われる。
   root 'home#top'
 
-  resources 'users'
   post '/favorites', to: 'favorites#create'
   get '/favorites', to: 'favorites#index'
+
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
+  resources 'users'
 end

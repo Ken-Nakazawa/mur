@@ -59,7 +59,7 @@
                 <td><%= image_tag item["smallImageUrls"][0] %></td>
                 <td id=item_link><%= link_to truncate(item.name, length: 50 ), "#{item.url}" %></td>
                 <td id=texit_white align="right"><%= number_with_delimiter(item.price) %>円</td>
-                <td><%= link_to favorites_path(item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0]), method: :post do %>
+                <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0]), method: :post do %>
                   <%= image_tag 'icons/heart.png', class: 'topic-index-icon' %></td>
                   <% end %>
               </tr>
@@ -72,6 +72,8 @@
     </div>
   </div>
   <div id="footer">
-    <p id=texit_white align="center">Copyright © 2018 Urge Inc. All rights reserved.</p>
+    <br>
+    <br>
+    <p id=texit_white align="center">Copyright © <%= Date.today.year %> Urge Inc. All rights reserved.</p>
   </div>
 </div>

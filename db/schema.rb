@@ -10,17 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526052049) do
+ActiveRecord::Schema.define(version: 20180602055858) do
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "uid"
-    t.integer "topic_id"
+    t.integer "user_id"
+    t.integer "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
-    t.integer "rakuten_id"
+  create_table "items", force: :cascade do |t|
+    t.string "rakutenitem_id"
     t.string "item_name"
     t.string "item_url"
     t.string "itemimage_url"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

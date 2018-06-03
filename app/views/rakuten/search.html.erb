@@ -5,14 +5,13 @@
       <%= link_to root_path do %>
       <%= image_tag 'icons/urge_logo.png', class: 'urge_logo' %></li>
       <% end %>
-      <br>
       <% if logged_in? %>
+        <li align="center"><%= link_to 'お気に入り一覧', root_path %></li>
         <li align="center"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       <% else %>
+      <br>
         <li align="center"><%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %></li>
       <% end %>
-
-
     </ul>
   </div>
   <div id="wrapper">
@@ -24,7 +23,6 @@
         <%= submit_tag "検索" %>
       <% end %>
       <% if @trends.present? %>
-        <b id=texit_white></b>
         <ul>
           <% @trends.each_with_index do |trend, i| %>
             <div class="list">

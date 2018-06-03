@@ -6,7 +6,13 @@
       <%= image_tag 'icons/urge_logo.png', class: 'urge_logo' %></li>
       <% end %>
       <br>
-      <li align="center"><%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %></li>
+      <% if logged_in? %>
+        <li align="center"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+      <% else %>
+        <li align="center"><%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %></li>
+      <% end %>
+
+
     </ul>
   </div>
   <div id="wrapper">

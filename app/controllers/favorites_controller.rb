@@ -13,7 +13,7 @@ class FavoritesController < ApplicationController
     favorite.user_id = current_user.id
     favorite.item_id = @item.id
     if favorite.save
-      redirect_to topics_path, notice: 'お気に入りに登録しました'
+      redirect_to root_path, notice: 'お気に入りに登録しました'
     else
       redirect_to topics_path, notice: 'お気に入りに登録に失敗しました'
     end

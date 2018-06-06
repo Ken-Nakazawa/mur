@@ -20,12 +20,9 @@ class RakutenController < ApplicationController
         # リツイートを除く、検索ワードにひっかかった最新30件のツイートを取得する
         tweets = client.search(params[:keyword], count: 30, result_type: "recent", exclude: "retweets", since_id: since_id)
         # 取得したツイートをモデルに渡す
-        tweets.take(30).each do |tw|
-          tweet = Tweet.new(tw.full_text)
+        tweets.take(30).each do |tw,tm|
+          tweet = tweet.new(text: tw.full_text, image_url: t.media_url)
           @tweets << tweet
-          tw.media.each do |t|
-          t.media_url
-          end
         end
 
 

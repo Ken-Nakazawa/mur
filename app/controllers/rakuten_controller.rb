@@ -4,7 +4,6 @@ class RakutenController < ApplicationController
     pk.delete!("#")
     if params[:keyword]  != ""
       @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
-      end
 
       client = Twitter::REST::Client.new do |config|
         # 事前準備で取得したキーのセット
@@ -20,12 +19,19 @@ class RakutenController < ApplicationController
         # リツイートを除く、検索ワードにひっかかった最新30件のツイートを取得する
         tweets = client.search(params[:keyword], count: 30, result_type: "recent", exclude: "retweets", since_id: since_id)
         # 取得したツイートをモデルに渡す
-        tweets.take(30).each do |tw,tm|
-          tweet = tweet.new(text: tw.full_text, image_url: t.media_url)
+        @t_image = []
+        i = 0
+        tweets.take(30).each do |tw|
+          tweet = Tweet.new(tw.full_text)
           @tweets << tweet
+          if tw.media != []
+            tw.media.each do |t|
+              @t_image_i = t.media_url
+            end
+          end
+          @t_image[i] =  @t_image_i
+          i += 1
         end
-
-
       end
         @trends = client.trends(1118370)
       respond_to do |format|
@@ -35,3 +41,4 @@ class RakutenController < ApplicationController
       end
     end
   end
+end

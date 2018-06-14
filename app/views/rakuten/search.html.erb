@@ -37,10 +37,10 @@
         <b>検索結果</b>
         <ul>
           <% @tweets.each_with_index do |tweet, i| %>
-            <div class="list">
-              <li>Tweet<%= i %>: <%= tweet.contents %></li>
-              <li><%= image_tag @t_image[i] if !@t_image[i].nil? %></li>
-            </div>
+          <div class="search-list">
+             <li><%= tweet.contents %></li>
+             <li><%= image_tag @t_image[i], style: 'height:auto%;width:100%;' if !@t_image[i].nil? %></li>
+           </div>
           <% end %>
         </ul>
       <% else %>
@@ -65,8 +65,12 @@
                 <td id=item_link><%= link_to truncate(item.name, length: 50 ), "#{item.url}" %></td>
                 <td id=texit_white align="right"><%= number_with_delimiter(item.price) %>円</td>
                 <% if logged_in? %>
-                  <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0]), method: :post do %>
-                  <%= image_tag 'icons/heart.png', class: 'topic-index-icon' %></td>
+                  <% if favorited? item.code %>
+              
+                  <% else %>
+                    <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0]), method: :post do %>
+                    <%= image_tag 'icons/heart.png', class: 'topic-index-icon' %></td>
+                  <% end %>
                   <% end %>
                 <% end %>
               </tr>

@@ -13,4 +13,5 @@ class User < ApplicationRecord
   end
 
   has_many :favorites
+  has_many :items, through: :favorites
 end

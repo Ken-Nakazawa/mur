@@ -66,11 +66,11 @@
                 <td id=texit_white align="right"><%= number_with_delimiter(item.price) %>円</td>
                 <% if logged_in? %>
                   <% if favorited? item.code %>
-                    <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0]), method: :delete do %>
+                    <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0], keyword: @keyword), method: :delete do %>
                     <%= image_tag 'icons/heart-red.png', class: 'topic-index-icon' %></td>
                     <% end %>
                   <% else %>
-                    <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0]), method: :post do %>
+                    <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0], keyword: @keyword), method: :post do %>
                     <%= image_tag 'icons/heart.png', class: 'topic-index-icon' %></td>
                   <% end %>
                   <% end %>

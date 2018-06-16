@@ -1,9 +1,8 @@
 class RakutenController < ApplicationController
   def search
-    pk = params[:keyword]
-    pk.delete!("#")
+    @keyword = params[:keyword]
     if params[:keyword]  != ""
-      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword].delete("#"))
 
       client = Twitter::REST::Client.new do |config|
         # 事前準備で取得したキーのセット

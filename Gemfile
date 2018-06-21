@@ -34,6 +34,14 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :production do
+  gem 'pg'
+  gem 'omniauth'
+  gem 'omniauth-twitter'
+  gem 'dotenv-rails' #環境変数を簡単に利用できるgem
+  gem 'rakuten_web_service'
+  gem 'twitter'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

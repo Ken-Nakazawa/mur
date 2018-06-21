@@ -6,7 +6,10 @@
       <%= image_tag 'icons/urge_logo.png', class: 'urge_logo' %></li>
       <% end %>
       <% if logged_in? %>
+        <!--
         <li align="center"><%= link_to 'お気に入り一覧', root_path %></li>
+        -->
+        <br>
         <li align="center"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       <% else %>
       <br>
@@ -17,7 +20,7 @@
   <div id="wrapper">
     <div id="boxA">
       <br>
-      <%= form_tag :rakuten_search, method: :get do  %>
+      <%= form_tag :rakuten_search, method: :get do %>
         <%= label_tag :keyword, '' %>
         <%= text_field_tag 'keyword', params[:keyword] %>
         <%= submit_tag "検索" %>
@@ -72,7 +75,7 @@
                   <% else %>
                     <td><%= link_to favorites_path(rakutenitem_id: item.code, item_name: item.name, item_url: item.url, itemimage_url: item["smallImageUrls"][0], keyword: @keyword), method: :post do %>
                     <%= image_tag 'icons/heart.png', class: 'topic-index-icon' %></td>
-                  <% end %>
+                    <% end %>
                   <% end %>
                 <% end %>
               </tr>

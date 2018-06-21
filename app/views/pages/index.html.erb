@@ -6,7 +6,10 @@
       <%= image_tag 'icons/urge_logo.png', class: 'urge_logo' %></li>
       <% end %>
       <% if logged_in? %>
+        <!--
         <li align="center"><%= link_to 'お気に入り一覧', root_path %></li>
+        -->
+        <br>
         <li align="center"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       <% else %>
       <br>

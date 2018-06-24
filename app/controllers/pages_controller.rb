@@ -5,20 +5,11 @@ class PagesController < ApplicationController
       config.consumer_key         = "9ANwqVTcD0vBHxhifWw3liUGB"
       config.consumer_secret      = "pSfA7G3bAQlMBHoX0jZsY52KYaN095pajo33y50BhksMKwIjoJ"
     end
+
     @trends = client.trends(1118370)
-    @trends.each do |trend|
-      t = trend.name.dup
-      puts t.gsub!(/(#)/, '')
-      #puts t
-    end
-    @trends.each do |trend|
-      t = trend.name
-      puts t.delete("#")
-    end
 
     @tweets = []
     since_id = nil
-
     # 検索ワードが存在していたらツイートを取得
     if params[:keyword].present?
       # リツイートを除く、検索ワードにひっかかった最新30件のツイートを取得する

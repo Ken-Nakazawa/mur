@@ -13,7 +13,8 @@
         <li align="center"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       <% else %>
       <br>
-        <li align="center"><%= link_to 'Twitterアカウントでログイン', '/auth/twitter' %></li>
+      <!--Twitterアカウントでログイン-->
+        <li align="center"><%= link_to 'Login with Twitter account', '/auth/twitter' %></li>
       <% end %>
     </ul>
   </div>

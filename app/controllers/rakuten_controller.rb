@@ -1,8 +1,16 @@
 class RakutenController < ApplicationController
   def search
     @keyword = params[:keyword]
+    @keyword_parse = ""
+    nm = Natto::MeCab.new('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
+    nm.parse(params[:keyword].delete("#")) do |n|
+      if n.feature.include?("名詞")
+        @keyword_parse += "#{n.surface} "
+      end
+    end
+    puts @keyword_parse
     if params[:keyword]  != ""
-      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword].delete("#"), affiliateId: "16a1078a.5776ab5e.16a1078b.4f3c0e15")
+      @items = RakutenWebService::Ichiba::Item.search(keyword: @keyword_parse, affiliateId: "16a1078a.5776ab5e.16a1078b.4f3c0e15", orFlag: 1)
 
       client = Twitter::REST::Client.new do |config|
         # 事前準備で取得したキーのセット
@@ -33,7 +41,7 @@ class RakutenController < ApplicationController
             i += 1
           end
       end
-        @trends = client.trends(1118370)
+        @trends = client.trends(23424977)
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @tweets } # jsonを指定した場合、jsonフォーマットで返す

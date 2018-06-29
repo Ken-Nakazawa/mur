@@ -2,7 +2,7 @@ class RakutenController < ApplicationController
   def search
     @keyword = params[:keyword]
     @keyword_parse = ""
-    nm = Natto::MeCab.new('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
+    nm = Natto::MeCab.new
     nm.parse(params[:keyword].delete("#")) do |n|
       if n.feature.include?("名詞")
         @keyword_parse += "#{n.surface} "

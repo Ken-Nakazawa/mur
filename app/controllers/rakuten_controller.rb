@@ -41,7 +41,7 @@ class RakutenController < ApplicationController
             i += 1
           end
       end
-        @trends = client.trends(23424977)
+        @trends = client.trends(1118370)#japan
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @tweets } # jsonを指定した場合、jsonフォーマットで返す

@@ -1,16 +1,9 @@
 class RakutenController < ApplicationController
   def search
     @keyword = params[:keyword]
-    @keyword_parse = ""
-    nm = Natto::MeCab.new
-    nm.parse(params[:keyword].delete("#")) do |n|
-      if n.feature.include?("名詞")
-        @keyword_parse += "#{n.surface} "
-      end
-    end
-    puts @keyword_parse
+
     if params[:keyword]  != ""
-      @items = RakutenWebService::Ichiba::Item.search(keyword: @keyword_parse, affiliateId: "16a1078a.5776ab5e.16a1078b.4f3c0e15", orFlag: 1)
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword].delete("#"), affiliateId: "16a1078a.5776ab5e.16a1078b.4f3c0e15", orFlag: 1)
 
       client = Twitter::REST::Client.new do |config|
         # 事前準備で取得したキーのセット

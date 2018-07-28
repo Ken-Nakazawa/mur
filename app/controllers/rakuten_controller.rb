@@ -34,6 +34,7 @@ class RakutenController < ApplicationController
             i += 1
           end
       end
+      #トレンド取得エリア指定
         @trends = client.trends(1118370)#japan
       respond_to do |format|
         format.html # show.html.erb
